@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Website for internal user guides/solutions: engineers can browse solutions and publish blog-style solution posts; support users can view guides; admin manages user accounts (usernames/passwords) and can edit/publish updates.",
+  "architectural_notes": [
+    "Support seeding an initial Admin user account (configurable default credentials) for first-time access."
+  ],
+  "known_issues": [
+    "Prior build/deploy attempt failed ('AI was unable to fulfill your request'); needs retry after applying requested changes."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-add-authentication-flows-using-admin-managed-usernames-and-passwords-login-logout-and-session-handling-ensure-role-information-is-available-to-the-frontend-to-enforce-permissions",
+      "title": "Add authentication flows using admin-managed usernames and passwords: login, logout, and session handling. Ensure role information is available to the frontend to enforce permissions.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-core-end-user-pages-to-browse-and-read-published-user-guides-solutions-a-home-listing-view-with-basic-filters-like-tag-and-or-text-search-and-a-post-detail-view",
+      "title": "Create core end-user pages to browse and read published user guides/solutions: a home/listing view (with basic filters like tag and/or text search) and a post detail view.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enable-engineers-to-create-and-publish-blog-style-solution-posts-including-a-my-posts-view-and-an-editor-for-creating-updating-content-enforce-that-engineers-can-edit-delete-only-their-own-posts-while-admin-can-edit-delete-any-post",
+      "title": "Enable Engineers to create and publish blog-style solution posts, including a 'My posts' view and an editor for creating/updating content. Enforce that Engineers can edit/delete only their own posts, while Admin can edit/delete any post.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-an-admin-console-to-manage-users-create-users-set-reset-passwords-assign-roles-deactivate-reactivate-accounts-and-to-manage-content-create-edit-publish-unpublish-posts-and-post-updates",
+      "title": "Provide an Admin console to manage users (create users, set/reset passwords, assign roles, deactivate/reactivate accounts) and to manage content (create/edit/publish/unpublish posts and post updates).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-consistent-coherent-ui-theme-and-layout-for-a-knowledge-base-style-portal-choose-a-distinct-visual-direction-with-typography-spacing-and-neutral-color-palette-do-not-use-blue-purple-as-primary-colors-apply-the-theme-across-public-browsing-editor-and-admin-console",
+      "title": "Add consistent, coherent UI theme and layout for a knowledge-base style portal (choose a distinct visual direction with typography, spacing, and neutral color palette; do not use blue/purple as primary colors). Apply the theme across public browsing, editor, and admin console.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-include-required-static-image-assets-and-render-them-in-the-frontend-from-static-files-under-frontend-public-assets-generated",
+      "title": "Generate and include required static image assets and render them in the frontend from static files under frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-sign-in-experience-so-an-administrator-can-log-in-using-the-seeded-credentials-username-rushikesh-password-123-via-the-existing-username-password-authentication-flow-not-internet-identity-and-ensure-all-user-facing-login-text-remains-in-english",
+      "title": "Update the frontend sign-in experience so an administrator can log in using the seeded credentials (username \"Rushikesh\", password \"123\") via the existing username/password authentication flow (not Internet Identity), and ensure all user-facing login text remains in English.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a user guide/solutions website where engineers can browse solutions and user guides",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Allow engineers to create and publish blog-style solution posts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Implement authentication with admin-managed user accounts (usernames/passwords)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Role-based access: support users can view user guides/solutions; admin has full editing/publishing permissions",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Admin interface to edit content and post new updates",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement backend data models and persistent storage for: (a) users with roles (Admin, Engineer, Support) and admin-managed credentials (username + password hash), and (b) solution/guide posts with title, body (rich text or markdown-like plain text), tags, author, created/updated timestamps, and publish status (draft/published).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Seed/set default Admin account credentials (username: Rushikesh, password: 123)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Seed/set the default Admin account credentials to username \"Rushikesh\" and password \"123\" in the backend’s admin-managed username/password authentication system, ensuring the account has the Admin role and can be used to sign in after deployment/upgrade.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "User guide & solutions portal with role-based accounts and publishing",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

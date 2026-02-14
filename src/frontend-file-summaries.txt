@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application router with TanStack Router, defining all routes with proper React component functions for role-based access guards and layout integration.",
+  "frontend/src/auth/AuthProvider.tsx": "Authentication context provider that wraps Internet Identity with user profile state, uses backend role query for permission flags, and exposes identity and loginStatus for components.",
+  "frontend/src/auth/useAuth.ts": "Hook to access authentication context including login/logout functions, user profile, and role-based permission flags.",
+  "frontend/src/pages/LoginPage.tsx": "Login page with tabbed interface for Internet Identity and admin username/password authentication, with form validation and error handling in English.",
+  "frontend/src/components/AppLayout.tsx": "Main application layout with header navigation, logo, role-aware menu items, user dropdown displaying role from backend query, and footer with attribution.",
+  "frontend/src/components/ProfileSetupDialog.tsx": "Modal dialog for first-time users to set their name after authentication, saves profile with only name field and prevents closing via backdrop click.",
+  "frontend/src/components/AccessDeniedScreen.tsx": "Access denied screen shown when authenticated users try to access routes they don't have permission for.",
+  "frontend/src/pages/PostsListPage.tsx": "Home page displaying published posts with search, tag filtering, hero image, and empty state with CTA for engineers/admins.",
+  "frontend/src/pages/PostDetailPage.tsx": "Post detail view showing full content with markdown rendering, metadata, tags, and post actions for authorized users.",
+  "frontend/src/pages/MyPostsPage.tsx": "Engineer/Admin page to manage their own posts with tabs for all/published/drafts and actions to edit/publish/delete.",
+  "frontend/src/pages/PostEditorPage.tsx": "Post creation and editing form with title, content (markdown), and tag management, supporting both new posts and updates with identity-based ownership checks.",
+  "frontend/src/pages/admin/AdminConsolePage.tsx": "Admin console with tabs for content management and user management (placeholder for future implementation).",
+  "frontend/src/pages/admin/UserManagementPanel.tsx": "Placeholder panel for user management with informational message about current authentication limitations.",
+  "frontend/src/pages/admin/ContentManagementPanel.tsx": "Admin content management interface with post listing, search/filter, and actions to publish/unpublish/edit/delete any post.",
+  "frontend/src/components/PostActions.tsx": "Reusable dropdown menu component for post actions (edit, publish, unpublish, delete) with role-based visibility using identity from auth context and confirmation dialogs.",
+  "frontend/src/components/MarkdownContent.tsx": "Markdown-like content renderer supporting headers, lists, code blocks, bold, italic, inline code, links, and blockquotes with safe HTML-free rendering using React.ReactElement types.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including user profiles, user roles, posts CRUD, publish/unpublish, with proper cache invalidation.",
+  "frontend/src/main.tsx": "Application entry point wrapping the app with QueryClient, InternetIdentity, Auth, Theme providers and Sonner toaster for notifications.",
+  "frontend/src/index.css": "Global styles with warm neutral OKLCH color palette for light and dark modes, avoiding blue/purple primaries.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom font families (Inter, JetBrains Mono), extended color tokens, and typography plugin for markdown content."
+}

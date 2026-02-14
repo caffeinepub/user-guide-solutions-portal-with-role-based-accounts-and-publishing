@@ -1,0 +1,38 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Frontend: Username/password admin sign-in for seeded credentials",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Add a username/password admin sign-in path (English-only UI text) that can authenticate with the seeded credentials and results in Admin-gated UI access.",
+      "acceptanceCriteria": [
+        "The Login page provides a username/password sign-in path that works with username \"Rushikesh\" and password \"123\".",
+        "After successful login as the seeded Admin, the UI reflects Admin permissions (e.g., Admin route access is granted).",
+        "All login page labels, helper text, and error messages are in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "operation": "modify",
+          "description": "Update the login screen to include a username/password sign-in form for administrators (in addition to or instead of the current Internet Identity button), with all labels/helper text/errors in English. On submit, call the existing username/password authentication flow (via a backend capability exposed on the actor), persist any returned admin/session secret in sessionStorage (e.g., using existing URL/session utilities), then complete the sign-in flow so Admin permissions are reflected in the UI (Admin nav item visible and /admin accessible). Use the authorization component’s guidance for handling auth/authorization errors gracefully in UI; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/auth/useUsernamePasswordAuth.ts",
+          "operation": "create",
+          "description": "Create a small auth helper hook for username/password sign-in that invokes the backend capability through the existing actor, manages loading/error state, and stores any required secret/session value for subsequent authorized calls. Keep error messages user-friendly and in English. Use the authorization component’s guidance for auth state handling (e.g., clearing cached data on logout); verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/backend.d.ts",
+          "operation": "modify",
+          "description": "Update the TypeScript backend interface typings to include the existing username/password authentication capability used by the login form (and any returned token/secret type), and align the UserProfile type with what the frontend expects (e.g., include role if returned by getCallerUserProfile) so Admin role checks are type-safe."
+        },
+        {
+          "path": "frontend/src/auth/AuthProvider.tsx",
+          "operation": "modify",
+          "description": "Ensure the auth context correctly derives Admin status after a successful username/password sign-in (e.g., by relying on role returned from getCallerUserProfile and/or admin-check capability) and that login-related state/messages remain English-only. Use the authorization component’s RBAC conventions for determining and reflecting Admin permissions; verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

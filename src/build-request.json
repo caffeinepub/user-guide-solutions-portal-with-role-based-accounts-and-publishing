@@ -1,0 +1,57 @@
+{
+  "kind": "build_request",
+  "title": "Set default Admin credentials (Rushikesh / 123)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Seed/set the default Admin account credentials to username \"Rushikesh\" and password \"123\" in the backend’s admin-managed username/password authentication system, ensuring the account has the Admin role and can be used to sign in after deployment/upgrade.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "make Admin username  as - Rushikesh Passoword - 123"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On a fresh deployment, an Admin account exists with username \"Rushikesh\" and password \"123\".",
+        "The seeded Admin account has role \"Admin\" and is able to authenticate successfully.",
+        "If the canister is upgraded and an Admin user already exists, the upgrade does not unintentionally overwrite existing admin credentials; seeding occurs only when no admin user is present (or an equivalent safe, non-destructive policy).",
+        "Passwords are not stored in plaintext in stable state (store a hash or equivalent secure representation)."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Update the frontend sign-in experience so an administrator can log in using the seeded credentials (username \"Rushikesh\", password \"123\") via the existing username/password authentication flow (not Internet Identity), and ensure all user-facing login text remains in English.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "make Admin username  as - Rushikesh Passoword - 123"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Login page provides a username/password sign-in path that works with username \"Rushikesh\" and password \"123\".",
+        "After successful login as the seeded Admin, the UI reflects Admin permissions (e.g., Admin route access is granted).",
+        "All login page labels, helper text, and error messages are in English."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor with all logic in backend/main.mo; only add backend/migration.mo changes if needed to preserve/upgrade stable state safely.",
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any files under frontend/src/components/ui (compose instead)."
+  ],
+  "nonGoals": [
+    "Implementing third-party authentication providers (only supported auth mechanisms are Internet Identity and in-app username/password).",
+    "Adding password reset email/SMS flows or external integrations.",
+    "Changing post/content features unrelated to setting the default Admin credentials."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
