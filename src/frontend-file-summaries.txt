@@ -1,5 +1,5 @@
 {
-  "frontend/src/App.tsx": "Main application router with TanStack Router, defining all routes with proper React component functions for role-based access guards and layout integration.",
+  "frontend/src/App.tsx": "Main application router with TanStack Router wrapped in AuthProvider, defining all routes with proper React component functions for role-based access guards and layout integration.",
   "frontend/src/auth/AuthProvider.tsx": "Authentication context provider that wraps Internet Identity with user profile state, uses backend role query for permission flags, and exposes identity and loginStatus for components.",
   "frontend/src/auth/useAuth.ts": "Hook to access authentication context including login/logout functions, user profile, and role-based permission flags.",
   "frontend/src/pages/LoginPage.tsx": "Login page with tabbed interface for Internet Identity and admin username/password authentication, with form validation and error handling in English.",

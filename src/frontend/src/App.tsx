@@ -1,4 +1,5 @@
-import { RouterProvider, createRouter, createRoute, createRootRoute, Outlet } from '@tanstack/react-router';
+import { RouterProvider, createRouter, createRoute, createRootRoute } from '@tanstack/react-router';
+import { AuthProvider } from './auth/AuthProvider';
 import { useAuth } from './auth/useAuth';
 import AppLayout from './components/AppLayout';
 import PostsListPage from './pages/PostsListPage';
@@ -127,5 +128,9 @@ declare module '@tanstack/react-router' {
 }
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }

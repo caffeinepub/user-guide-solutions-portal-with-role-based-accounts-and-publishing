@@ -1,64 +1,31 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T04:42:08.426Z",
-  "summary": "The diff does not implement seeding default admin credentials (Rushikesh/123) in the backend, nor does it implement a working username/password login flow in the frontend. Instead, the frontend explicitly states that username/password authentication is not implemented, and backend changes appear focused on user profile schema/role handling and migration.",
+  "generatedAt": "2026-02-14T04:48:48.901Z",
+  "summary": "REQ-10 is partially addressed by wrapping the RouterProvider in AuthProvider inside frontend/src/App.tsx, which should prevent useAuth() being called outside the provider. However, the updated RootComponent used as the TanStack Router root route does not render an outlet/child routes, which likely breaks the existing authenticated routing behavior (pages/routes may never render), putting the acceptance criterion about preserving authentication-gated routing behavior at risk.",
   "missing_requirements": [
     {
-      "id": "REQ-8",
-      "requirement": "Seed/set the default Admin account credentials to username \"Rushikesh\" and password \"123\" in the backend’s admin-managed username/password authentication system, ensuring the account has the Admin role and can be used to sign in after deployment/upgrade (non-destructive on upgrade; no plaintext password in stable state).",
-      "reason": "No evidence in the backend diff of creating/seeding an admin user, storing a password hash, or adding/using any username/password authentication mechanisms. The added migration is about user profile shape (removing role), not credential seeding.",
+      "id": "REQ-10",
+      "requirement": "Authentication-gated routing behavior remains intact (unauthenticated users see the Login page; authenticated users see the AppLayout) while still allowing routed pages (e.g., PostsListPage, PostDetailPage, etc.) to render under the router root.",
+      "reason": "RootComponent (used as createRootRoute({ component: RootComponent })) returns <LoginPage /> or <AppLayout /> but never renders an outlet/child route content. With TanStack Router, the root route component typically needs to render an <Outlet /> (often inside AppLayout) for child routes to appear; without it, the defined child routes (/, /post/$postIndex, etc.) may not render at all, altering routing behavior.",
       "evidence": [
-        "backend/main.mo",
-        "backend/migration.mo"
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "requirement": "Update the frontend sign-in experience so an administrator can log in using the seeded credentials (username \"Rushikesh\", password \"123\") via the existing username/password authentication flow (not Internet Identity), and ensure all user-facing login text remains in English.",
-      "reason": "The Login page includes an \"Admin Login\" tab, but the submit handler explicitly says username/password authentication is not implemented in the backend and only shows an error message, so logging in with Rushikesh/123 via password flow is not supported.",
-      "evidence": [
-        "frontend/src/pages/LoginPage.tsx"
+        "frontend/src/App.tsx"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "User profile schema migration that removes the \"role\" field from stored user profiles.",
-      "reason": "The BuildRequest is about seeding default admin credentials and enabling admin username/password login; it does not request changing the user profile schema or migrating it to remove roles.",
+      "description": "Added an initialization/loading spinner screen with \"Loading...\" when isInitializing is true.",
+      "reason": "REQ-10 only requests fixing the AuthProvider/useAuth runtime error and preserving gated routing; a dedicated loading UI was not requested.",
       "evidence": [
-        "backend/migration.mo",
-        "backend/main.mo"
-      ]
-    },
-    {
-      "description": "Profile setup modal/dialog requiring users to enter their name after authentication.",
-      "reason": "Not requested by the BuildRequest; it changes onboarding/profile UX rather than default admin credentials or username/password login support.",
-      "evidence": [
-        "frontend/src/components/ProfileSetupDialog.tsx",
-        "frontend/src/components/AppLayout.tsx"
-      ]
-    },
-    {
-      "description": "Frontend role derivation and navigation gating changes based on a backend role query (admin/user/guest mapped to Admin/Engineer/Support).",
-      "reason": "The request only asks to ensure admin can log in with seeded credentials and see admin permissions; the diff adds/changes broader role mapping and UI behavior without implementing the requested password auth.",
-      "evidence": [
-        "frontend/src/auth/AuthProvider.tsx",
-        "frontend/src/components/AppLayout.tsx",
-        "frontend/src/hooks/useQueries.ts"
+        "frontend/src/App.tsx"
       ]
     }
   ],
-  "confidence": 0.78,
+  "confidence": 0.68,
   "changed_files": [
-    "backend/main.mo",
-    "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/src/auth/AuthProvider.tsx",
-    "frontend/src/components/AppLayout.tsx",
-    "frontend/src/components/ProfileSetupDialog.tsx",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/pages/LoginPage.tsx",
+    "frontend/src/App.tsx",
     "project_state.json"
   ]
 }

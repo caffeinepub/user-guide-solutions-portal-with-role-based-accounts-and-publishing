@@ -1,12 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
+  "projectStateVersion": 7,
   "summary": "Website for internal user guides/solutions: engineers can browse solutions and publish blog-style solution posts; support users can view guides; admin manages user accounts (usernames/passwords) and can edit/publish updates.",
   "architectural_notes": [
     "Support seeding an initial Admin user account (configurable default credentials) for first-time access."
   ],
   "known_issues": [
-    "Prior build/deploy attempt failed ('AI was unable to fulfill your request'); needs retry after applying requested changes."
+    "Prior build/deploy attempt failed ('AI was unable to fulfill your request'); needs retry after applying requested changes.",
+    "Runtime error in draft build: \"useAuth must be used within AuthProvider\" (Auth context hook used outside provider)."
   ],
   "isFixRequest": true,
   "existing_features": [
@@ -63,6 +64,14 @@
       "title": "Update the frontend sign-in experience so an administrator can log in using the seeded credentials (username \"Rushikesh\", password \"123\") via the existing username/password authentication flow (not Internet Identity), and ensure all user-facing login text remains in English.",
       "reqIds": [
         "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-runtime-error-useauth-must-be-used-within-authprovider-by-ensuring-that-all-components-that-call-useauth-including-the-router-root-component-in-frontend-src-app-tsx-are-rendered-within-an-authprovider-tree-without-modifying-immutable-files-such-as-frontend-src-main-tsx",
+      "title": "Fix the runtime error \"useAuth must be used within AuthProvider\" by ensuring that all components that call `useAuth()` (including the router root component in `frontend/src/App.tsx`) are rendered within an `AuthProvider` tree, without modifying immutable files such as `frontend/src/main.tsx`.",
+      "reqIds": [
+        "REQ-10"
       ],
       "version": 1
     }

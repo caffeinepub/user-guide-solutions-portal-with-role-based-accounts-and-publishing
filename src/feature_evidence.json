@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-frontend-sign-in-experience-so-an-administrator-can-log-in-using-the-seeded-credentials-username-rushikesh-password-123-via-the-existing-username-password-authentication-flow-not-internet-identity-and-ensure-all-user-facing-login-text-remains-in-english",
-      "featureTitle": "Update the frontend sign-in experience so an administrator can log in using the seeded credentials (username \"Rushikesh\", password \"123\") via the existing username/password authentication flow (not Internet Identity), and ensure all user-facing login text remains in English.",
+      "featureId": "feature-fix-the-runtime-error-useauth-must-be-used-within-authprovider-by-ensuring-that-all-components-that-call-useauth-including-the-router-root-component-in-frontend-src-app-tsx-are-rendered-within-an-authprovider-tree-without-modifying-immutable-files-such-as-frontend-src-main-tsx",
+      "featureTitle": "Fix the runtime error \"useAuth must be used within AuthProvider\" by ensuring that all components that call `useAuth()` (including the router root component in `frontend/src/App.tsx`) are rendered within an `AuthProvider` tree, without modifying immutable files such as `frontend/src/main.tsx`.",
       "files": [
-        "frontend/src/auth/AuthProvider.tsx",
-        "frontend/src/pages/LoginPage.tsx"
+        "frontend/src/App.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -17,7 +16,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-9"
+        "REQ-10"
       ],
       "confidence": "high"
     }

@@ -10,9 +10,9 @@ import Order "mo:core/Order";
 import Principal "mo:core/Principal";
 import MixinAuthorization "authorization/MixinAuthorization";
 import AccessControl "authorization/access-control";
-import Migration "migration";
 
-(with migration = Migration.run)
+
+
 actor {
   type PostId = Nat;
   var nextPostId : PostId = 0;

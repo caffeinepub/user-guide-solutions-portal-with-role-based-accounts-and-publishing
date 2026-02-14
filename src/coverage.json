@@ -1,57 +1,34 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T04:42:08.429Z",
+  "generatedAt": "2026-02-14T04:48:48.904Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
+    "total": 1,
     "implemented": 1,
     "items": [
       {
-        "id": "REQ-8",
-        "summary": "Seed/set the default Admin account credentials to username \"Rushikesh\" and password \"123\" in the backend’s admin-managed username/password authentication system, ensuring the account has the Admin role and can be used to sign in after deployment/upgrade.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-9",
-        "summary": "Update the frontend sign-in experience so an administrator can log in using the seeded credentials (username \"Rushikesh\", password \"123\") via the existing username/password authentication flow (not Internet Identity), and ensure all user-facing login text remains in English.",
+        "id": "REQ-10",
+        "summary": "Fix the runtime error \"useAuth must be used within AuthProvider\" by ensuring that all components that call `useAuth()` (including the router root component in `frontend/src/App.tsx`) are rendered within an `AuthProvider` tree, without modifying immutable files such as `frontend/src/main.tsx`.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/LoginPage.tsx",
-          "frontend/src/auth/useUsernamePasswordAuth.ts",
-          "frontend/src/backend.d.ts",
-          "frontend/src/auth/AuthProvider.tsx"
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/LoginPage.tsx",
-          "frontend/src/backend.d.ts",
-          "frontend/src/auth/AuthProvider.tsx"
+          "frontend/src/App.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
-    "backend/migration.mo",
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/auth/AuthProvider.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/AppLayout.tsx",
-    "frontend/src/components/ProfileSetupDialog.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/pages/LoginPage.tsx",
+    "frontend/src/App.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

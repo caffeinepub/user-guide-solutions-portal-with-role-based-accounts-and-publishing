@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Ensure a default Admin account exists with username "Rushikesh" and password "123", and allow signing in via the existing username/password login flow.
+**Goal:** Eliminate the runtime error `useAuth must be used within AuthProvider` by ensuring all `useAuth()` callers (including `RootComponent` in `frontend/src/App.tsx`) render under an `AuthProvider`, without changing immutable files like `frontend/src/main.tsx`.
 
 **Planned changes:**
-- Seed/set a default Admin user in the backend with username "Rushikesh" and password "123", storing a secure (non-plaintext) password representation.
-- Implement a safe, non-destructive policy on upgrade so existing admin credentials are not overwritten (only seed when no admin user exists).
-- Update/verify the frontend login flow to support signing in with the seeded username/password credentials (not Internet Identity) and keep all login UI text in English.
+- Update `frontend/src/App.tsx` composition so the router/root component tree that calls `useAuth()` is wrapped by `AuthProvider` at runtime.
+- Preserve existing authentication-gated routing behavior (unauthenticated users see the Login page; authenticated users see the AppLayout).
+- Avoid modifications to immutable files (including `frontend/src/main.tsx` and `frontend/src/components/ui/*`).
 
-**User-visible outcome:** On a fresh deployment, an administrator can sign in using username "Rushikesh" and password "123" through the username/password login path, and Admin access is granted after login.
+**User-visible outcome:** The app launches without the `useAuth must be used within AuthProvider` error, and login-gated navigation continues to behave the same.
